@@ -1,0 +1,43 @@
+{
+  "name": "cab432-a1-video-api",
+  "version": "1.1.0",
+  "description": "CAB432 A02 – Cloud-enabled Video API (A1 preserved; S3 + DynamoDB + Cognito)",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "load:test": "node scripts/load_test.js",
+    "docker:build": "docker build -t a2-group80:latest .",
+    "docker:run": "docker run --rm -p 3000:3000 --env-file .env a2-group80:latest"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.640.0",
+    "@aws-sdk/client-dynamodb": "^3.640.0",
+    "@aws-sdk/client-s3": "^3.640.0",
+    "@aws-sdk/client-secrets-manager": "^3.640.0",
+    "@aws-sdk/client-sqs": "^3.913.0",
+    "@aws-sdk/client-ssm": "^3.640.0",
+    "@aws-sdk/lib-dynamodb": "^3.640.0",
+    "@aws-sdk/s3-request-presigner": "^3.640.0",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "aws-jwt-verify": "^5.1.0",
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "jwk-to-pem": "^2.0.5",
+    "morgan": "^1.10.0",
+    "nanoid": "^5.0.7",
+    "node-fetch": "^3.3.2",
+    "redis": "^4.6.13",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

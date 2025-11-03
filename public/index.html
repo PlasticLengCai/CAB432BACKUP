@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAB432 A02 — Cloud-enabled Video API Demo</title>
+  <style>
+    html, body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; }
+    header { padding: 12px 16px; background: #0b132b; color: #fff; }
+    main { padding: 16px; max-width: 1100px; margin: 0 auto; }
+    section { margin: 16px 0; padding: 12px; border: 1px solid #e5e7eb; border-radius: 10px; }
+    h2 { margin: 0 0 10px; }
+    h3 { margin: 0 0 8px; }
+    input, button, select { padding: 6px 10px; margin: 4px 0; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 12px; }
+    .card { border: 1px solid #eee; border-radius: 8px; padding: 8px; }
+    code { background: #f7f7f7; padding: 2px 4px; border-radius: 4px; }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .warn { color: #b45309; }
+    .ext-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-top: 6px; }
+    .ext-item { border: 1px solid #eee; border-radius: 6px; padding: 6px; }
+    .ext-item img { width: 100%; height: 90px; object-fit: cover; border-radius: 4px; display: block; }
+    .ext-title { font-size: 12px; margin-top: 4px; line-height: 1.2; }
+    .ext-source { font-size: 11px; color: #666; }
+  </style>
+  <!-- 外链 + defer，满足 CSP（禁止内联事件） -->
+  <script src="/public/app.js" defer></script>
+</head>
+<body>
+<header><strong>CAB432 A02</strong> — Cloud-enabled Video API (Demo Client)</header>
+<main>
+  <!-- A2 -->
+  <section>
+    <h2>A2 — Cloud Features</h2>
+    <div class="row" style="gap:6px;">
+      <button id="btnDebugEcho" type="button">A2 Debug: Echo Header</button>
+      <button id="btnDebugVerify" type="button">A2 Debug: Verify JWT</button>
+    </div>
+    <p class="warn">Cognito auth + S3 presigned upload + DynamoDB metadata.</p>
+
+    <h3>1) Cognito account</h3>
+    <div class="row">
+      <input id="cg_username" placeholder="username">
+      <input id="cg_email" placeholder="email">
+      <input id="cg_password" type="password" placeholder="password">
+      <button id="btn_cg_signup">Sign up</button>
+    </div>
+    <div class="row">
+      <input id="cg_code" placeholder="confirmation code">
+      <button id="btn_cg_confirm">Confirm</button>
+    </div>
+    <div class="row">
+      <input id="cg_username_login" placeholder="username (login)">
+      <input id="cg_password_login" type="password" placeholder="password (login)">
+      <button id="btn_cg_login">Login</button>
+      <span id="cg_whoami"></span>
+    </div>
+
+    <h3>2) S3 direct upload (presigned PUT)</h3>
+    <div class="row">
+      <input id="s3_key" placeholder="s3 key e.g. videos/demo-001.mp4" value="videos/demo-001.mp4">
+      <input id="s3_title" placeholder="title (for DynamoDB)" value="My S3 Video">
+      <input id="s3_file" type="file" accept="video/*">
+      <button id="btn_s3_upload">Upload to S3 (presigned)</button>
+      <span id="s3_status"></span>
+    </div>
+
+    <h3>3) DynamoDB metadata</h3>
+    <div class="row">
+      <button id="btn_ddb_create">Create/Upsert item</button>
+      <button id="btn_ddb_list">List items</button>
+    </div>
+    <div id="ddb_list" class="grid"></div>
+  </section>
+
+  <!-- A1 -->
+  <section>
+    <h2>A1 — Local Features</h2>
+    <p class="warn">Local login, upload, transcode, thumbnails, external APIs.</p>
+
+    <h3>1) Local login</h3>
+    <p>Demo: <code>alice/alice123</code> or <code>bob/bob123</code></p>
+    <div class="row">
+      <input id="username" placeholder="username" value="alice">
+      <input id="password" type="password" placeholder="password" value="alice123">
+      <button id="btn_login">Login</button>
+      <span id="whoami"></span>
+    </div>
+
+    <h3>2) Local upload / transcode</h3>
+    <div class="row">
+      <input id="title" placeholder="title (optional)"/>
+      <input id="file" type="file" accept="video/*" />
+      <button id="btn_upload">Upload</button>
+    </div>
+
+    <h3>3) Files</h3>
+    <div class="row">
+      Search: <input id="q" placeholder="query">
+      Sort:
+      <select id="sort">
+        <option value="uploadedAt">uploadedAt</option>
+        <option value="title">title</option>
+        <option value="size">size</option>
+      </select>
+      Order:
+      <select id="order">
+        <option value="desc">desc</option>
+        <option value="asc">asc</option>
+      </select>
+    </div>
+    <div id="files" class="grid"></div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "videos": [
+    {
+      "id": "Xp-AaDAAuVegmS1mhkmxn",
+      "owner": "u1",
+      "originalFilename": "282995.mp4",
+      "pathOriginal": "/app/storage/original/Xp-AaDAAuVegmS1mhkmxn.mp4",
+      "mime": "video/mp4",
+      "size": 92815522,
+      "uploadedAt": "2025-08-30T11:33:25.967Z",
+      "title": "v1"
+    },
+    {
+      "id": "W8CtBjVDz1kt9zUICTLt2",
+      "owner": "u1",
+      "originalFilename": "Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster).mp4",
+      "pathOriginal": "/app/storage/original/W8CtBjVDz1kt9zUICTLt2.mp4",
+      "mime": "video/mp4",
+      "size": 241744177,
+      "uploadedAt": "2025-08-30T11:39:05.433Z",
+      "title": "Rick"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "j_mey6xt3r_93ginl",
+      "videoId": "W8CtBjVDz1kt9zUICTLt2",
+      "owner": "u1",
+      "params": {
+        "format": "mp4",
+        "resolution": "1280x720",
+        "crf": 18,
+        "preset": "veryslow",
+        "extraFilters": ""
+      },
+      "status": "completed",
+      "startedAt": "2025-08-30T11:41:07.863Z",
+      "outputPath": "/app/storage/transcoded/W8CtBjVDz1kt9zUICTLt2_1280x720_mp4.mp4",
+      "finishedAt": "2025-08-30T11:45:10.653Z"
+    }
+  ]
+}
